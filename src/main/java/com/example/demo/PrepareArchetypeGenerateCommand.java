@@ -61,4 +61,18 @@ public class PrepareArchetypeGenerateCommand {
 		}
 		return null;
 	}
+	
+	public void checkCloneProjectDirectory(String path) {
+		File theDir = new File(path);
+		if (!theDir.exists()){
+		    theDir.mkdirs();
+		}
+	}
+	
+	public void checkCodeTemplateProjectDirectory(String path) {
+		File theDir = new File(path);
+		if (!theDir.exists()){
+		    theDir.mkdirs();
+		}
+	}
 }

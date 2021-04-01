@@ -24,6 +24,7 @@ public class TemplateController {
 	@PostMapping("/templates")
 	public ResponseEntity<Template> createTemplate(@RequestBody Template template) {
 		String repoUrl = template.getProjectUrl() + ".git";
+		archetypeCmd.checkCloneProjectDirectory("C:\\Projects\\Github_Project");
 		String cloneDirectoryPath = "C:\\Projects\\Github_Project";
 		try {
 			System.out.println("Cloning " + repoUrl + " into " + repoUrl);
@@ -47,6 +48,7 @@ public class TemplateController {
 			String command = archetypeCmd.prepareArchetypeGenerateCmd(template.getGroupId(), template.getArtifactId(),
 					template.getPkg(), template.getVersion());
 			builder.command("cmd.exe", "/c", command);
+			archetypeCmd.checkCodeTemplateProjectDirectory("C:\\Projects\\SpringBoot_Code_Template");
 			builder.directory(new File("C:\\Projects\\SpringBoot_Code_Template"));
 			process = builder.start();
 			
